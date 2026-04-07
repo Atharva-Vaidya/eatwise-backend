@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EatWise – Enterprise AI Food Coach</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Boxicons for Enterprise Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Enterprise Navigation Bar -->
+    <nav class="enterprise-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-brand" aria-label="EatWise Enterprise">
+                    <i class='bx bx-leaf text-primary'></i>
+                    EatWise <span class="badge">Enterprise</span>
+                </div>
+            </div>
+            <div class="nav-center">
+                <a href="#" class="nav-link active" aria-current="page">Dashboard</a>
+                <a href="#" class="nav-link">Analytics</a>
+                <a href="#" class="nav-link">Reports</a>
+            </div>
+            <div class="nav-right">
+                <button class="icon-btn" aria-label="Notifications"><i class='bx bx-bell'></i></button>
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=Atharva&background=2563eb&color=fff" alt="User avatar">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-layout">
+        <!-- Page Header -->
+        <header class="page-header slide-up">
+            <div>
+                <h1 class="greeting">Good afternoon, Atharva.</h1>
+                <p class="subtitle">Here is your daily nutrition overview and analytics.</p>
+            </div>
+            <button class="btn-outline" aria-label="Export nutrition report"><i class='bx bx-export'></i> Export Report</button>
+        </header>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            
+            <!-- Left Column: Inputs & Stats -->
+            <div class="grid-col left-col slide-up" style="animation-delay: 0.1s">
+                
+                <!-- Input Widget -->
+                <div class="enterprise-card input-widget">
+                    <div class="card-header">
+                        <h3><i class='bx bx-message-square-edit'></i> Log Activity</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="meal-input-grid">
+                            <div class="input-group full-width">
+                                <label for="mealInput">What did you eat?</label>
+                                <input type="text" id="mealInput" list="commonMeals" placeholder="Search famous meals or type your own..." aria-label="Meal description input" aria-describedby="errorText" />
+                                <datalist id="commonMeals">
+                                    <option value="Masala Dosa with Sambar"></option>
+                                    <option value="Butter Chicken with Garlic Naan"></option>
+                                    <option value="Grilled Chicken Salad"></option>
+                                    <option value="Paneer Tikka Wrap"></option>
+                                    <option value="Avocado Toast with Eggs"></option>
+                                    <option value="Dal Tadka and Jeera Rice"></option>
+                                    <option value="Spaghetti Bolognese"></option>
+                                    <option value="Chole Bhature"></option>
+                                    <option value="Idli with Coconut Chutney"></option>
+                                    <option value="Sushi Roll (Salmon/Tuna)"></option>
+                                    <option value="Chicken Biryani"></option>
+                                    <option value="Oatmeal with Berries and Nuts"></option>
+                                </datalist>
+                            </div>
+                            <div class="input-group">
+                                <label for="mealQuantity">Quantity</label>
+                                <input type="number" id="mealQuantity" min="0.25" step="0.25" value="1" aria-label="Meal quantity" />
+                            </div>
+                            <div class="input-group">
+                                <label for="mealTiming">Timing</label>
+                                <select id="mealTiming" aria-label="Meal timing">
+                                    <option value="Breakfast">🌅 Breakfast</option>
+                                    <option value="Lunch" selected>☀️ Lunch</option>
+                                    <option value="Snack">☕ Snack</option>
+                                    <option value="Dinner">🌙 Dinner</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="errorBanner" class="error-banner hidden" role="alert" aria-live="assertive">
+                            <i class='bx bx-error-circle' aria-hidden="true"></i>
+                            <span id="errorText">Please enter a meal</span>
+                        </div>
+                        <div class="input-actions">
+                            <div class="chips-container">
+                                <button class="chip" data-meal="Burger, fries and coke" aria-label="Quick fill: Junk meal — Burger, fries and coke">🍔 Junk Meal</button>
+                                <button class="chip" data-meal="Grilled chicken, salad and brown rice" aria-label="Quick fill: Healthy meal — Grilled chicken, salad and brown rice">🥗 Healthy Meal</button>
+                                <button class="chip" data-meal="Dal, roti, sabzi and rice" aria-label="Quick fill: Indian meal — Dal, roti, sabzi and rice">🍛 Indian Meal</button>
+                            </div>
+                            <button id="analyzeBtn" class="btn-primary" aria-label="Analyze meal">
+                                Analyze <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <button id="insightsBtn" class="btn-secondary mt-16" aria-label="View weekly nutrition insights">
+                            <i class='bx bx-bar-chart-alt-2' aria-hidden="true"></i> My Week Insights
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Weekly Performance -->
+                <div class="enterprise-card stats-widget mt-24">
+                    <div class="card-header flex-bw">
+                        <h3><i class='bx bx-trending-up'></i> Weekly Performance</h3>
+                        <span class="streak-badge"><i class='bx bxs-flame'></i> 5 Day Streak</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="stats-text">Your nutrition adherence has improved by <strong>12%</strong> this week. System recommends maintaining current protein levels.</p>
+                        <div class="progress-container mt-16">
+                            <div class="flex-bw progress-labels">
+                                <span>Weekly Goal Target</span>
+                                <span class="font-bold text-primary">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: AI Analysis -->
+            <div class="grid-col right-col slide-up" style="animation-delay: 0.2s">
+                
+                <!-- Empty State -->
+                <div class="enterprise-card empty-state" id="emptyState">
+                    <i class='bx bx-radar empty-icon'></i>
+                    <h4>Awaiting Data Entry</h4>
+                    <p>Enter your meal details on the left to generate real-time AI analytics.</p>
+                </div>
+
+                <!-- Results State -->
+                <div class="enterprise-card results-state hidden fade-in" id="resultCard" aria-live="polite">
+                    <div class="card-header">
+                        <h3><i class='bx bx-data'></i> Nutritional Analysis</h3>
+                    </div>
+                    
+                    <div class="results-body">
+                        <!-- Hero Score -->
+                        <div class="score-hero">
+                            <div class="score-graphic-lg">
+                                <svg width="180" height="180" viewBox="0 0 180 180">
+                                    <circle class="svg-bg" cx="90" cy="90" r="80" stroke-width="12"></circle>
+                                    <circle id="scoreRingProgress" class="svg-progress stroke-green" cx="90" cy="90" r="80" stroke-width="12" stroke-dasharray="502.65" stroke-dashoffset="502.65"></circle>
+                                </svg>
+                                <div class="score-central-lg">
+                                    <span id="healthScore" class="score-number-lg">0</span>
+                                    <span class="score-suffix">/100</span>
+                                </div>
+                            </div>
+                            <span id="scoreLabel" class="score-label bg-green-light text-green">Healthy</span>
+                        </div>
+
+                        <h2 id="mealName" class="analyzed-meal-name">Grilled Salmon &amp; Quinoa</h2>
+
+                        <div class="card-header flex-bw" style="margin-bottom:0.5rem">
+                            <h3><i class='bx bx-data'></i> Breakdown</h3>
+                            <span id="statusBadge" class="status-badge bg-green-light text-green">Optimized</span>
+                        </div>
+
+                        <div class="macro-grid mt-24">
+                            <div class="macro-box card-inner">
+                                <span class="macro-label">Total Calories</span>
+                                <span class="macro-val" id="calories">0</span>
+                            </div>
+                            <div class="macro-box card-inner">
+                                <span class="macro-label">Protein</span>
+                                <span class="macro-val" id="protein">0g</span>
+                                <div class="mini-bar bg-blue"><div class="mini-fill" style="width: 80%"></div></div>
+                            </div>
+                            <div class="macro-box card-inner">
+                                <span class="macro-label">Carbs</span>
+                                <span class="macro-val" id="carbs">0g</span>
+                                <div class="mini-bar bg-yellow"><div class="mini-fill" style="width: 45%"></div></div>
+                            </div>
+                            <div class="macro-box card-inner">
+                                <span class="macro-label">Fat</span>
+                                <span class="macro-val" id="fat">0g</span>
+                                <div class="mini-bar bg-red"><div class="mini-fill" style="width: 30%"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="ai-insight-box mt-24">
+                            <div class="insight-header">
+                                <i class='bx bx-brain text-primary'></i> AI Coach Insight
+                            </div>
+                            <p id="tipText">Processing nutritional breakdown...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insights Section -->
+                <div class="enterprise-card insights-state hidden fade-in" id="insightsSection" aria-live="polite">
+                    <div class="card-header flex-bw">
+                        <h3><i class='bx bx-line-chart'></i> Weekly Insights</h3>
+                        <span id="streakBadge" class="streak-badge"><i class='bx bxs-flame'></i> <span id="streakDays">0</span> Day Streak</span>
+                    </div>
+                    <div class="insights-body">
+                        <p id="insightsSummary" class="stats-text">Loading your weekly summary...</p>
+                        <div id="suggestionsGrid" class="suggestions-grid mt-24">
+                            <!-- Suggestion cards injected by JS -->
+                        </div>
+                        <div id="insightsMessage" class="ai-insight-box mt-24 hidden">
+                            <div class="insight-header"><i class='bx bx-info-circle text-primary'></i> Notice</div>
+                            <p id="insightsMessageText"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enterprise Footer -->
+    <footer class="enterprise-footer slide-up" style="animation-delay: 0.3s">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="nav-brand"><i class='bx bx-leaf text-primary'></i> EatWise</div>
+                <p>Enterprise-grade AI nutrition analytics<br>and personalized coaching.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <a href="#">Dashboard</a>
+                <a href="#">Integrations</a>
+                <a href="#">API Access</a>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Compliance</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 EatWise Inc. All rights reserved.</span>
+            <span>Powered by AI • Built on Google Cloud</span>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

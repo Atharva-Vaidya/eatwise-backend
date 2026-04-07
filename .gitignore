@@ -1,0 +1,11 @@
+# Environment tracking
+.env
+.env.local
+
+# Node modules
+node_modules/
+npm-debug.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
