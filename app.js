@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
 
         try {
-            const res = await fetch('https://https://eatwise-backend-140379800154.asia-south1.run.app/api/log-meal', {
+            const res = await fetch('https://eatwise-backend-140379800154.asia-south1.run.app/api/log-meal', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
 
         try {
-            const res = await fetch(`https://https://eatwise-backend-140379800154.asia-south1.run.app/api/insights?user_id=${encodeURIComponent(appState.user_id)}`);
+            const res = await fetch(`https://eatwise-backend-140379800154.asia-south1.run.app/api/insights?user_id=${encodeURIComponent(appState.user_id)}`);
 
             if (!res.ok) {
                 if (res.status === 429) {
